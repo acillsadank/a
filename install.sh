@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 #
 # Original script by fornesia, rzengineer and fawzya 
 # Mod by Rizwan Arif Firmansyah
@@ -18,7 +18,7 @@ locality=KadallFamily
 organization=KadallFamily
 organizationalunit=KadallFamily
 commonname=TheBigKadallFamily
-email=Acill.sadank@gmail.com
+email=acill.sadank@gmail.com
 
 # configure rc.local
 cat <<EOF >/etc/rc.local
