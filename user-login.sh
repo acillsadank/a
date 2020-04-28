@@ -50,6 +50,6 @@ echo "------------------------------------------------" | lolcat
 
 echo "";
 
-echo "Mod by Rizwan Arif Firmansyah " | lolcat;
+echo "Mod by Rizwan Arif Firmansyah" | lolcat;
 
 echo "";

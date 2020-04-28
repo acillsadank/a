@@ -1,5 +1,5 @@
 #!/bin/bash
-# Mod Rizwan Arif Firmansyah
+# Mod by Rizwan Arif Firmansyah
 rm -f /root/opensshport
 rm -f /root/dropbearport
 rm -f /root/stunnel4port
