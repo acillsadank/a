@@ -1,7 +1,7 @@
-﻿#!/bin/bash
+#!/bin/bash
 #
 # Original script by fornesia, rzengineer and fawzya 
-# Mod by Rizwan Arif Firmansyah
+# Mod by Janda Baper
 # 
 # ==================================================
 
@@ -97,23 +97,23 @@ echo 'echo -e ""' >> .bashrc
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/acillsadak/install/master/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/acillsadank/install/master/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>Setup by JandaBaper</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/acillsadak/install/master/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/acillsadank/install/master/vps.conf"
 
 # install openvpn
 apt-get -y install openvpn easy-rsa openssl
 cp -r /usr/share/easy-rsa/ /etc/openvpn
 mkdir /etc/openvpn/easy-rsa/keys
 sed -i 's|export KEY_COUNTRY="US"|export KEY_COUNTRY="ID"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_PROVINCE="CA"|export KEY_PROVINCE="JATIM"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_CITY="SanFrancisco"|export KEY_CITY="KEDIRI"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_ORG="Fort-Funston"|export KEY_ORG="KadallFamily"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_PROVINCE="CA"|export KEY_PROVINCE="JAWABARAT"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_CITY="SanFrancisco"|export KEY_CITY="Purwakarta"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_ORG="Fort-Funston"|export KEY_ORG="AcillSadank"|' /etc/openvpn/easy-rsa/vars
 sed -i 's|export KEY_EMAIL="me@myhost.mydomain"|export KEY_EMAIL="acill.sadank@gmail.com"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_OU="MyOrganizationalUnit"|export KEY_OU="KadallFamily"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_NAME="EasyRSA"|export KEY_NAME="KadallFamily"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_OU=changeme|export KEY_OU=KadallFamily|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_OU="MyOrganizationalUnit"|export KEY_OU="AcillSadank"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_NAME="EasyRSA"|export KEY_NAME="AcillSadank"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_OU=changeme|export KEY_OU="AcillSadank"|' /etc/openvpn/easy-rsa/vars
 
 # Create Diffie-Helman Pem
 openssl dhparam -out /etc/openvpn/dh2048.pem 2048
@@ -186,7 +186,7 @@ sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 apt-get -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=143/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 990 "/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 990"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/dropbear restart
@@ -243,7 +243,7 @@ apt-get -y install fail2ban
 # install ddos deflate
 cd
 apt-get -y install dnsutils dsniff
-wget https://raw.githubusercontent.com/acillsadank/install/master/ddos-deflate-master.zip
+wget https://raw.githubusercontent.com/janda09/install/master/ddos-deflate-master.zip
 unzip ddos-deflate-master.zip
 cd ddos-deflate-master
 ./install.sh
@@ -350,18 +350,18 @@ echo "nginx    : 81"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Script"  | tee -a log-install.txt
 echo "------"  | tee -a log-install.txt
-echo "0 (Displays a list of available commands)"  | tee -a log-install.txt
-echo "1 (Edit Ports)"  | tee -a log-install.txt
-echo "2 (Creating an SSH Account)"  | tee -a log-install.txt
-echo "3 (Create a Trial Account)"  | tee -a log-install.txt
-echo "4 (Clearing SSH Account)"  | tee -a log-install.txt
-echo "5 (Check User Login)"  | tee -a log-install.txt
-echo "6 (Check Member SSH)"  | tee -a log-install.txt
-echo "7 (Restart Service dropbear, webmin, squid3, openvpn and ssh)"  | tee -a log-install.txt
-echo "8 (Reboot VPS)"  | tee -a log-install.txt
-echo "9 (Speedtest VPS)"  | tee -a log-install.txt
-echo "10 (System Information)"  | tee -a log-install.txt
-echo "11 (Information about auto install script)"  | tee -a log-install.txt
+echo "menu (Displays a list of available commands)"  | tee -a log-install.txt
+echo "edit (Edit Ports)"  | tee -a log-install.txt
+echo "usernew (Creating an SSH Account)"  | tee -a log-install.txt
+echo "trial (Create a Trial Account)"  | tee -a log-install.txt
+echo "delete (Clearing SSH Account)"  | tee -a log-install.txt
+echo "check (Check User Login)"  | tee -a log-install.txt
+echo "member (Check Member SSH)"  | tee -a log-install.txt
+echo "restart (Restart Service dropbear, webmin, squid3, openvpn and ssh)"  | tee -a log-install.txt
+echo "reboot (Reboot VPS)"  | tee -a log-install.txt
+echo "speedtest (Speedtest VPS)"  | tee -a log-install.txt
+echo "info (System Information)"  | tee -a log-install.txt
+echo "about (Information about auto install script)"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Other features"  | tee -a log-install.txt
 echo "----------"  | tee -a log-install.txt
